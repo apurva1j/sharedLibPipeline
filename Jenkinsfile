@@ -14,13 +14,12 @@ pipeline {
                 bat "echo Test"
             }
         }
-		stage('sharedLib') {
+	stage('sharedLib') {
+	steps {
+    	HelloWorld('helloooo world')
+   	 }
 
-steps('hello world') {
-    HelloWorld('helloooo world')
-    }
-
-		
+	}	
 		
         stage('Deploy') { 
             steps {
