@@ -13,7 +13,7 @@ pipeline {
         }
 		stage('sharedLib') {
 		steps {
-		libraryResource '/org/dcube/dummy.json'
+		libraryResource 'org/dcube/dummy.json'
             	bat "echo shared library"
 		}
 		}
