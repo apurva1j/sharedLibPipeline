@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apurva1j/sample1.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apurva1j/pipelineDemo.git']]])
             }
         }
         stage('Test') { 
@@ -11,17 +11,10 @@ pipeline {
                 bat "echo Test"
             }
         }
-		stage('Sonarqube') {
-		environment {
-        scannerHome = tool 'SonarScannerLocal'
-		}
+		stage('sharedLib') {
 		steps {
-        withSonarQubeEnv('SonalLocal') {
-            bat "${scannerHome}/bin/sonar-scanner"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
+		libraryResource 'https://github.com/devopscube/jenkins-shared-library-framework/blob/master/resources/org/dcube/dummy.json'
+            	bat "echo shared library"
 		}
 		}
 		
