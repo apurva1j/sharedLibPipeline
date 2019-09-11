@@ -1,6 +1,9 @@
 pipeline {
     agent any 
     stages {
+	    
+	@Library('')_
+
         stage('Build') { 
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apurva1j/pipelineDemo.git']]])
@@ -12,11 +15,12 @@ pipeline {
             }
         }
 		stage('sharedLib') {
-		steps {
-		libraryResource '/org/dcube/sample.txt'
-            	bat "echo shared library"
-		}
-		}
+
+stage('hello world') {
+    HelloWorld('helloooo world')
+    }
+} 
+		
 		
         stage('Deploy') { 
             steps {
