@@ -2,7 +2,7 @@ pipeline {
     agent any 
     stages {
 	    
-	@Library('jenkinsLibrary')
+	@Library('jenkinsLibrary')_
 
         stage('Build') { 
             steps {
@@ -16,10 +16,10 @@ pipeline {
         }
 		stage('sharedLib') {
 
-stage('hello world') {
+steps('hello world') {
     HelloWorld('helloooo world')
     }
-} 
+
 		
 		
         stage('Deploy') { 
