@@ -2,7 +2,7 @@ pipeline {
     agent any 
     stages {
 	    
-	@Library('')_
+	@Library('jenkinsLibrary')
 
         stage('Build') { 
             steps {
