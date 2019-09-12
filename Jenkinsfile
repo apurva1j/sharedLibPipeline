@@ -1,8 +1,9 @@
+@Library('jenkinsLibrary')_
 pipeline {
     agent any 
     stages {
 	    
-	@Library('jenkinsLibrary')_
+
         stage('Build') { 
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apurva1j/pipelineDemo.git']]])
